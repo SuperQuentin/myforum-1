@@ -22,6 +22,6 @@ class Admin
         if($user->role_id == 3)
             return $next($request);
 
-        return redirect('/');
+        return redirect('/' )->with('message', 'vous n\'avez pas les authorisations');
     }
 }
