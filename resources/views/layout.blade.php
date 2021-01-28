@@ -31,7 +31,7 @@
         <li class="nav-item"><a href="{{ route('states.index') }}" class="btn">Gestion des états</a></li>
         <li class="nav-item"><a href="{{ route('themes.index') }}" class="btn">Modération</a></li>
         @if (Auth::user()->isAdmin())
-            <li class="nav-item"><a href="{{ route('user.index') }}" class="btn">Gestion des utilisateurs</a></li>
+            <li class="nav-item"><a href="{{ route('users.index') }}" class="btn">Gestion des utilisateurs</a></li>
         @endif
 
     </ul>
