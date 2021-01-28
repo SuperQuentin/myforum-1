@@ -22,12 +22,19 @@ class RolesTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Prof',
+                'slug' => 'PROF',
+                'name' => 'Enseignant',
             ),
             1 => 
             array (
                 'id' => 2,
-                'name' => 'Stud',
+                'slug' => 'STUD',
+                'name' => 'Etudiant',
+            ),
+            2 => array (
+                'id' => 3,
+                'slug' => 'ADMI',
+                'name' => 'Administrateur',
             ),
         ));
         
