@@ -18,7 +18,7 @@ class adminuser extends Command
      *
      * @var string
      */
-    protected $description = 'Grants the admin role to a user';
+    protected $description = 'Grants the admin role to a user ';
 
     /**
      * Create a new command instance.
