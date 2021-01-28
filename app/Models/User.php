@@ -51,4 +51,8 @@ class User extends Authenticatable
         return $this->hasMany(Opinion::class);
     }
 
+    public function isAdmin(){
+        return $this->role_id == 3 ? true : false;
+    }
+
 }
