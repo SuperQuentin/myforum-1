@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::post('opinions/comment/', [OpinionController::class, 'newComment'])->name('opinions.comment');
     Route::Resource('references', ReferenceController::class);
     Route::Resource('roles', RoleController::class);
+    Route::Resource('users', UserController::class);
     Route::Resource('states', StateController::class);
     Route::Resource('themes', ThemeController::class);
     Route::Resource('topics', TopicController::class);
