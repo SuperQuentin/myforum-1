@@ -30,6 +30,10 @@
         <li class="nav-item"><a href="{{ route('roles.index') }}" class="btn">Gestion des rôles</a></li>
         <li class="nav-item"><a href="{{ route('states.index') }}" class="btn">Gestion des états</a></li>
         <li class="nav-item"><a href="{{ route('themes.index') }}" class="btn">Modération</a></li>
+        @if (Auth::user()->isAdmin())
+            <li class="nav-item"><a href="{{ route('themes.index') }}" class="btn">Gestion des utilisateurs</a></li>
+        @endif
+
     </ul>
 </nav>
 @if ($message = Session::get('message'))
