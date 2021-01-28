@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -13,7 +14,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view ('users.index');
+        $users = User::all();
+
+        $nbAdmin = count(User::all()->where('role_id',3));
+
+
+        return view ('users.index', ['users' => $users, 'editAdmin' => $nbAdmin < 5 ? true : false]);
     }
 
     /**
@@ -80,5 +86,53 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function setAdmin(Request $request)
+    {
+        $id = $request->input('id');
+
+        try
+        {
+            $user = User::find($id);
+
+            if($user == null) throw new Exception('User not found');
+
+            $user->role_id = 3;
+
+            $user->save();
+        }
+        catch(Exception $e)
+        {
+            console.log($e);
+        }
+        finally
+        {
+            return redirect('/users')->with('status', $user->pseudo . ' est admin');
+        }
+    }
+
+    public function unsetAdmin(Request $request)
+    {
+        $id = $request->input('id');
+
+        try
+        {
+            $user = User::find($id);
+
+            if($user == null) throw new Exception('User not found');
+
+            $user->role_id = 2;
+
+            $user->save();
+        }
+        catch(Exception $e)
+        {
+            console.log($e);
+        }
+        finally
+        {
+            return redirect('/users')->with('status', $user->pseudo . ' n\'est plus admin');
+        }
     }
 }
