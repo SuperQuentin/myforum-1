@@ -29,6 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::Resource('references', ReferenceController::class);
     Route::Resource('roles', RoleController::class);
     Route::Resource('users', UserController::class);
+
+    Route::middleware('admin')->group( function () {
+        Route::post('users/admin/add',[UserController::class, 'setAdmin'])->name('users.setAdmin');
+        Route::post('users/admin/remove',[UserController::class, 'unsetAdmin'])->name('users.unsetAdmin');
+    });
+
     Route::Resource('states', StateController::class);
     Route::Resource('themes', ThemeController::class);
     Route::Resource('topics', TopicController::class);
